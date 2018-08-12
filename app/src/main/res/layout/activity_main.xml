@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="app.autowatering.MainActivity">
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimary"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp">
+
+            <TextView
+                android:id="@+id/waterLabelTextView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/water"
+                android:textAllCaps="true"
+                android:textColor="@color/white"
+                app:layout_constraintLeft_toLeftOf="parent"
+                android:textSize="@dimen/textSizeTitle"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="8dp"
+                app:layout_constraintLeft_toLeftOf="@id/waterLabelTextView"
+                app:layout_constraintRight_toRightOf="@+id/waterLabelTextView"
+                app:layout_constraintTop_toBottomOf="@+id/waterLabelTextView"
+                tools:text="OK"/>
+
+            <TextView
+                android:id="@+id/deviceTimeTextView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintLeft_toRightOf="@+id/waterLabelTextView"
+                android:textSize="@dimen/textSizeTitle"
+                android:textColor="@color/white"
+                android:gravity="center"
+                app:layout_constraintRight_toLeftOf="@+id/syncButton"
+                tools:text="09:30"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="8dp"
+                android:textSize="@dimen/textSizeSmall"
+                app:layout_constraintLeft_toLeftOf="@+id/deviceTimeTextView"
+                app:layout_constraintRight_toRightOf="@+id/deviceTimeTextView"
+                app:layout_constraintTop_toBottomOf="@+id/deviceTimeTextView"
+                tools:text="Синхр-вано: 09:17"/>
+
+            <TextView
+                android:id="@+id/syncButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/sync_label"
+                android:textColor="@color/white"
+                android:drawablePadding="8dp"
+                android:background="?selectableItemBackground"
+                android:gravity="center"
+                android:drawableTop="@drawable/ic_sync_white_24dp"
+                app:layout_constraintRight_toRightOf="parent"/>
+
+        </android.support.constraint.ConstraintLayout>
+
+    </android.support.design.widget.AppBarLayout>
+
+    <include layout="@layout/content_main"/>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|center"
+        android:layout_margin="@dimen/fab_margin"
+        app:srcCompat="@drawable/ic_add_white_24dp"/>
+
+</android.support.design.widget.CoordinatorLayout>
