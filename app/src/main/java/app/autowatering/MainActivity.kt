@@ -16,7 +16,12 @@ import android.content.Context
 import android.content.IntentFilter
 import android.util.Log
 import android.bluetooth.BluetoothSocket
+import android.graphics.Rect
+import android.support.v7.widget.LinearLayoutManager
+import android.support.v7.widget.RecyclerView
+import android.view.View
 import android.widget.Toast
+import kotlinx.android.synthetic.main.content_main.*
 import kotlinx.coroutines.experimental.android.UI
 import kotlinx.coroutines.experimental.async
 import kotlinx.coroutines.experimental.launch
@@ -86,11 +91,36 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        if (!btAdapter.isEnabled) {
-            askToEnableBt()
-        } else {
-            onBtEnabled()
+//        if (!btAdapter.isEnabled) {
+//            askToEnableBt()
+//        } else {
+//            onBtEnabled()
+//        }
+
+        recyclerView.layoutManager = LinearLayoutManager(this)
+        recyclerView.adapter = WateringScriptsArrayAdapter().apply {
+            val items = (0 until 5).mapTo(arrayListOf()) {
+                WateringScriptViewPresentation().apply {
+                    scriptIdText = "#$it"
+                    startInText = "Start in: $it"
+                    durationText = "Duration: $it"
+                    intervalText = "Interval: $it"
+                }
+            }
+
+            update(items)
         }
+
+        recyclerView.addItemDecoration(object : RecyclerView.ItemDecoration() {
+            override fun getItemOffsets(outRect: Rect, view: View,
+                                        parent: RecyclerView, state: RecyclerView.State) {
+                super.getItemOffsets(outRect, view, parent, state)
+
+                if (parent.getChildAdapterPosition(view) == state.itemCount - 1) {
+                    outRect.bottom = 200
+                }
+            }
+        })
     }
 
     private var i = 0
