@@ -1,14 +1,17 @@
-package app.autowatering
+package app.autowatering.main
 
 import android.support.v7.util.DiffUtil
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import app.autowatering.databinding.WateringScriptsListItemBinding
+import kotlinx.android.synthetic.main.watering_scripts_list_item.view.*
 
 class WateringScriptsArrayAdapter : RecyclerView.Adapter<WateringScriptsArrayAdapter.ViewHolder>() {
 
     private val items = ArrayList<WateringScriptViewPresentation>()
+
+    var listener: OnWateringScriptActionsListener? = null
 
     fun update(newItems: ArrayList<WateringScriptViewPresentation>) {
         val diff = DiffUtil.calculateDiff(object : DiffUtil.Callback() {
@@ -48,12 +51,23 @@ class WateringScriptsArrayAdapter : RecyclerView.Adapter<WateringScriptsArrayAda
         holder.bind(items[position])
     }
 
-    class ViewHolder(private val binding: WateringScriptsListItemBinding) :
+    inner class ViewHolder(private val binding: WateringScriptsListItemBinding) :
             RecyclerView.ViewHolder(binding.root) {
+
+        init {
+            itemView.actionButton.setOnClickListener({
+                if (adapterPosition == RecyclerView.NO_POSITION) return@setOnClickListener
+                listener?.onScriptActionClick(items[adapterPosition])
+            })
+        }
 
         fun bind(item: WateringScriptViewPresentation) {
             binding.item = item
             binding.executePendingBindings()
         }
+    }
+
+    interface OnWateringScriptActionsListener {
+        fun onScriptActionClick(item: WateringScriptViewPresentation)
     }
 }

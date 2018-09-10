@@ -1,7 +1,7 @@
-package app.autowatering
+package app.autowatering.core
 
 import java.nio.ByteBuffer
-import app.autowatering.WateringClient.WateringScript
+import app.autowatering.core.WateringClient.WateringScript
 
 class WateringClientImpl(private val remoteClient: RemoteClient) : WateringClient {
 
@@ -96,6 +96,10 @@ class WateringClientImpl(private val remoteClient: RemoteClient) : WateringClien
         val cmd: Byte = bytes[0]
         val success: Boolean = bytes[1] == 1.toByte()
         val data: ByteArray = bytes.sliceArray(2 until bytes.size)
+
+        init {
+            println("CMD: ${bytes[0]}; \nResponse: ${bytes.joinToString(", ")} ")
+        }
 
         fun hasData() = data.isNotEmpty()
 

@@ -1,6 +1,6 @@
 package app.autowatering
 
-import kotlinx.coroutines.experimental.async
+import app.autowatering.core.RemoteClientImpl
 import kotlinx.coroutines.experimental.launch
 import kotlinx.coroutines.experimental.runBlocking
 import kotlinx.coroutines.experimental.test.TestCoroutineContext

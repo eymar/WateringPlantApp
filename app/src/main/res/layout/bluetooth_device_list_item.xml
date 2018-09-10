@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="item"
+            type="app.autowatering.bluetooth.BtDeviceViewPresentation"/>
+    </data>
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?selectableItemBackground">
+
+        <TextView
+            android:id="@+id/deviceNameTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:paddingLeft="16dp"
+            android:paddingTop="16dp"
+            android:text="@{item.name}"
+            android:textSize="@dimen/textSizeTitle"
+            tools:text="DEVICE NAME"/>
+
+        <TextView
+            android:id="@+id/deviceMacTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:paddingLeft="16dp"
+            android:text="@{item.mac}"
+            app:layout_constraintTop_toBottomOf="@+id/deviceNameTextView"
+            tools:text="43:BA:9D:97"/>
+
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:alpha="0.3"
+            android:layout_marginTop="8dp"
+            android:background="@color/black"
+            app:layout_constraintTop_toBottomOf="@+id/deviceMacTextView"/>
+
+    </android.support.constraint.ConstraintLayout>
+
+</layout>

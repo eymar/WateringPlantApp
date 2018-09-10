@@ -4,4 +4,5 @@
     <string name="water">Вода</string>
     <string name="sync_label">Обновить</string>
     <string name="edit">Редактировать</string>
+    <string name="search_device_label">Поиск Bluetooth устройств...</string>
 </resources>

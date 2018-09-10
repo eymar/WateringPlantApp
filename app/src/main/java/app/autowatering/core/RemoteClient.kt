@@ -1,4 +1,4 @@
-package app.autowatering
+package app.autowatering.core
 
 
 interface RemoteClient {

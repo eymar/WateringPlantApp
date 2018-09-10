@@ -1,6 +1,5 @@
-package app.autowatering
+package app.autowatering.core
 
-import kotlinx.coroutines.experimental.Deferred
 import kotlinx.coroutines.experimental.async
 import kotlinx.coroutines.experimental.channels.Channel
 import kotlinx.coroutines.experimental.delay

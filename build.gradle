@@ -4,6 +4,7 @@ buildscript {
     ext.kotlin_version = '1.2.41'
     ext.gradlePluginVersion = '3.0.1'
 
+
     repositories {
         google()
         jcenter()
@@ -26,4 +27,9 @@ allprojects {
 
 task clean(type: Delete) {
     delete rootProject.buildDir
+}
+
+ext {
+    // Architecture Components dependencies
+    archLifecycleVersion = "1.1.0"
 }

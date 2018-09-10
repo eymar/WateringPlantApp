@@ -1,4 +1,4 @@
-package app.autowatering
+package app.autowatering.core
 
 import android.bluetooth.BluetoothDevice
 import android.bluetooth.BluetoothSocket

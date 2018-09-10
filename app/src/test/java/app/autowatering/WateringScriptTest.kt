@@ -1,5 +1,8 @@
 package app.autowatering
 
+import app.autowatering.core.RemoteClientImpl
+import app.autowatering.core.WateringClient
+import app.autowatering.core.WateringClientImpl
 import junit.framework.Assert.assertTrue
 import kotlinx.coroutines.experimental.launch
 import kotlinx.coroutines.experimental.runBlocking
