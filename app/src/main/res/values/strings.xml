@@ -5,4 +5,9 @@
     <string name="sync_label">Обновить</string>
     <string name="edit">Редактировать</string>
     <string name="search_device_label">Поиск Bluetooth устройств...</string>
+    <string name="watering_duration_label">Продолжительность полива</string>
+    <string name="watering_interval_label">Интервал полива</string>
+    <string name="start_in_label">Старт программы</string>
+    <string name="remove">Удалить</string>
+    <string name="save">Сохранить</string>
 </resources>
