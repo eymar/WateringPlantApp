@@ -11,6 +11,7 @@ import app.autowatering.App
 import app.autowatering.core.BluetoothConnection
 import app.autowatering.main.MainActivity
 import app.autowatering.R
+import app.autowatering.main.edit.EditWateringProgramDialog
 import app.autowatering.showToast
 import kotlinx.android.synthetic.main.search_device_activity.*
 import kotlinx.coroutines.experimental.android.UI
@@ -33,6 +34,10 @@ class SearchDeviceActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.search_device_activity)
         configureView()
+
+        EditWateringProgramDialog().apply {
+            isCancelable = false
+        }.show(supportFragmentManager, "tag")
     }
 
     private fun configureView() {
