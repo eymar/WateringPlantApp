@@ -35,7 +35,7 @@ android {
 }
 
 dependencies {
-    kapt "com.android.databinding:compiler:$gradlePluginVersion"
+//    kapt "com.android.databinding:compiler:$gradlePluginVersion"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:0.23.4"
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:0.23.4'
 
