@@ -18,7 +18,9 @@ class EditWateringProgramViewModel : ViewModel() {
     val screenTitle = ObservableField<String>()
     val isEditScript = ObservableBoolean()
     val inProgress = ObservableBoolean()
+
     val finishCommand = SingleLiveEvent<Unit>()
+    val toastPub = SingleLiveEvent<String>()
 
 
     fun start(scriptToEdit: WateringClient.WateringScript? = null) {
@@ -30,6 +32,32 @@ class EditWateringProgramViewModel : ViewModel() {
             script = scriptToEdit
             configureViewForEditScript()
         }
+    }
+
+    private fun setIntervalSeconds(seconds: Int) {
+
+    }
+
+    private fun mapIntervalMinutesToProgress(minutes: Int): Int {
+        if (minutes <= 0) {
+            throw IllegalArgumentException()
+        }
+
+        if (minutes <= 10) {
+            return minutes - 1
+        }
+
+        if (minutes <= 2130) {
+            return (minutes / 30) + 9
+        }
+
+        val progress = 79 + minutes / (24 * 60)
+
+        if (progress > 100) {
+            throw IllegalArgumentException("Progress exceeds 100")
+        }
+
+        return progress
     }
 
     private fun configureViewForEditScript() {
@@ -45,29 +73,41 @@ class EditWateringProgramViewModel : ViewModel() {
     fun onSaveClicked() = launch(UI) {
         inProgress.set(true)
 
-        val success = async {
-            client!!.commitUsualScript(script!!)
-        }.await()
+        try {
+            val success = async {
+                client!!.commitUsualScript(script!!)
+            }.await()
 
+            inProgress.set(false)
 
-        inProgress.set(false)
-
-        if (success) {
-            finishCommand.call()
+            if (success) {
+                finishCommand.call()
+            }
+        } catch (t: Throwable) {
+            handleError(t)
         }
     }
 
     fun onDeleteClicked() = launch(UI) {
         inProgress.set(true)
 
-        val success = async {
-            client!!.commitUsualScript(script!!.copy(enabled = false))
-        }.await()
+        try {
+            val success = async {
+                client!!.commitUsualScript(script!!.copy(enabled = false))
+            }.await()
 
-        inProgress.set(false)
+            inProgress.set(false)
 
-        if (success) {
-            finishCommand.call()
+            if (success) {
+                finishCommand.call()
+            }
+        } catch (t: Throwable) {
+            handleError(t)
         }
+    }
+
+    private fun handleError(t: Throwable) {
+        inProgress.set(false)
+        toastPub.value = "Error: ("
     }
 }
