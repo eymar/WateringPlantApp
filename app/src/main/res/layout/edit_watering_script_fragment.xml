@@ -1,143 +1,156 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:background="@color/white"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+<layout>
+    
+    <data>
+        <variable
+            name="viewModel"
+            type="app.autowatering.main.edit.EditWateringProgramViewModel"/>
+    </data>
 
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/toolbar"
+    <android.support.constraint.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:navigationIcon="@drawable/ic_close_black_24dp"
-        app:title="@string/edit"/>
+        android:background="@color/white">
 
-    <TextView
-        android:id="@+id/durationLabelText"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:textColor="@color/black"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginRight="16dp"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar"
-        android:text="@string/watering_duration_label"/>
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:navigationIcon="@drawable/ic_close_black_24dp"
+            app:title="@string/edit"/>
 
-    <android.support.v7.widget.AppCompatSeekBar
-        android:id="@+id/durationSeekBar"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:thumbTint="@color/blue"
-        android:progressTint="@color/blue"
-        tools:progress="70"
-        android:layout_marginLeft="2dp"
-        android:layout_marginRight="2dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/durationLabelText"/>
+        <TextView
+            android:id="@+id/durationLabelText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/watering_duration_label"
+            android:textColor="@color/black"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar"/>
 
-    <TextView
-        android:id="@+id/durationValueText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/durationLabelText"
-        android:layout_marginRight="16dp"
-        android:textColor="@color/blue"
-        tools:text="60 sec"/>
+        <android.support.v7.widget.AppCompatSeekBar
+            android:id="@+id/durationSeekBar"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="2dp"
+            android:layout_marginRight="2dp"
+            android:layout_marginTop="8dp"
+            android:progressTint="@color/blue"
+            android:thumbTint="@color/blue"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/durationLabelText"
+            tools:progress="70"/>
 
-
-    <TextView
-        android:id="@+id/intervalLabelText"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:textColor="@color/black"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginRight="16dp"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/durationSeekBar"
-        android:text="@string/watering_interval_label"/>
-
-    <android.support.v7.widget.AppCompatSeekBar
-        android:id="@+id/intervalSeekBar"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:thumbTint="@color/blue"
-        android:progressTint="@color/blue"
-        tools:progress="70"
-        android:layout_marginLeft="2dp"
-        android:layout_marginRight="2dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/intervalLabelText"/>
-
-    <TextView
-        android:id="@+id/intervalValueText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/intervalLabelText"
-        android:layout_marginRight="16dp"
-        android:textColor="@color/blue"
-        tools:text="60 sec"/>
+        <TextView
+            android:id="@+id/durationValueText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="16dp"
+            android:textColor="@color/blue"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/durationLabelText"
+            android:text="@{viewModel.durationValueText}"
+            tools:text="60 sec"/>
 
 
-    <TextView
-        android:id="@+id/startInlLabelText"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:textColor="@color/black"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginRight="16dp"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/intervalSeekBar"
-        android:text="@string/start_in_label"/>
+        <TextView
+            android:id="@+id/intervalLabelText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="32dp"
+            android:text="@string/watering_interval_label"
+            android:textColor="@color/black"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/durationSeekBar"/>
 
-    <android.support.v7.widget.AppCompatSeekBar
-        android:id="@+id/startInSeekBar"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:thumbTint="@color/red"
-        android:progressTint="@color/red"
-        tools:progress="70"
-        android:layout_marginLeft="2dp"
-        android:layout_marginRight="2dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/startInlLabelText"/>
+        <android.support.v7.widget.AppCompatSeekBar
+            android:id="@+id/intervalSeekBar"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="2dp"
+            android:layout_marginRight="2dp"
+            android:layout_marginTop="8dp"
+            android:progressTint="@color/blue"
+            android:thumbTint="@color/blue"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/intervalLabelText"
+            tools:progress="70"/>
 
-    <TextView
-        android:id="@+id/startInlValueText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/startInlLabelText"
-        android:layout_marginRight="16dp"
-        android:textColor="@color/red"
-        tools:text="60 sec"/>
+        <TextView
+            android:id="@+id/intervalValueText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="16dp"
+            android:textColor="@color/blue"
+            android:text="@{viewModel.intervalValueText}"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/intervalLabelText"
+            tools:text="60 sec"/>
 
 
-    <android.support.v7.widget.AppCompatButton
-        android:id="@+id/removeButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginRight="8dp"
-        android:text="@string/remove"
-        android:textColor="@color/gray"
-        style="@style/Widget.AppCompat.Button.Borderless.Colored"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/startInSeekBar"/>
+        <TextView
+            android:id="@+id/startInlLabelText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="32dp"
+            android:text="@string/start_in_label"
+            android:textColor="@color/black"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/intervalSeekBar"/>
 
-</android.support.constraint.ConstraintLayout>
+        <android.support.v7.widget.AppCompatSeekBar
+            android:id="@+id/startInSeekBar"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="2dp"
+            android:layout_marginRight="2dp"
+            android:layout_marginTop="8dp"
+            android:progressTint="@color/red"
+            android:thumbTint="@color/red"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/startInlLabelText"
+            tools:progress="70"/>
+
+        <TextView
+            android:id="@+id/startInlValueText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="16dp"
+            android:textColor="@color/red"
+            android:text="@{viewModel.startInValueText}"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/startInlLabelText"
+            tools:text="60 sec"/>
+
+
+        <android.support.v7.widget.AppCompatButton
+            android:id="@+id/removeButton"
+            style="@style/Widget.AppCompat.Button.Borderless.Colored"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="8dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/remove"
+            android:textColor="@color/gray"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/startInSeekBar"/>
+
+    </android.support.constraint.ConstraintLayout>
+
+</layout>
